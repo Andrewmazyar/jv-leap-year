@@ -1,5 +1,7 @@
 package core.basesyntax;
 
+import java.util.stream.IntStream;
+
 /**
  * <p>Реализуйте метод, вычисляющий количество високосных лет с начала нашей эры (первого года)
  * до заданного года включительно. На самом деле Григорианский календарь был введен значительно
@@ -11,6 +13,8 @@ package core.basesyntax;
  */
 public class LeapYear {
     public int countLeapYears(int year) {
-        return 0;
+        return (int) IntStream.rangeClosed(1, year)
+                .filter(i -> i % 400 == 0 || (i % 4 == 0 && i % 100 != 0))
+                .count(); // return year / 4 - year / 100 + year / 400; - second solution
     }
 }
